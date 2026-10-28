@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="PanificadoraVendas.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:PanificadoraVendas.Views"
+       Title="Panificação B2B"
+       FlyoutBehavior="Disabled">
+    <TabBar>
+        <ShellContent Title="Roteiro" Route="roteiro" ContentTemplate="{DataTemplate views:RoteiroPage}" />
+        <ShellContent Title="Clientes" Route="clientes" ContentTemplate="{DataTemplate views:ClientesPage}" />
+        <ShellContent Title="Envio" Route="envio" ContentTemplate="{DataTemplate views:EnvioPage}" />
+        <ShellContent Title="Sincronizar" Route="sync" ContentTemplate="{DataTemplate views:SincronizarPage}" />
+    </TabBar>
+</Shell>

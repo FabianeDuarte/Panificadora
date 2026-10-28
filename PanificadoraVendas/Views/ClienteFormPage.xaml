@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PanificadoraVendas.Views.ClienteFormPage" xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:PanificadoraVendas.ViewModels" Title="Novo cliente">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <Entry Placeholder="Razão social *" Text="{Binding RazaoSocial}" />
+            <Entry Placeholder="Nome fantasia" Text="{Binding NomeFantasia}" />
+            <Entry Placeholder="CNPJ (ou CPF do MEI) *" Keyboard="Numeric" Text="{Binding CpfCnpj}" />
+            <Entry Placeholder="Telefone" Keyboard="Telephone" Text="{Binding Telefone}" />
+            <Entry Placeholder="Endereço" Text="{Binding Endereco}" />
+            <Entry Placeholder="Bairro" Text="{Binding Bairro}" />
+            <Grid ColumnDefinitions="*,80" ColumnSpacing="8">
+                <Entry Placeholder="Cidade *" Text="{Binding Cidade}" />
+                <Entry Grid.Column="1" Placeholder="UF" MaxLength="2" Text="{Binding Uf}" />
+            </Grid>
+            <Label Text="Roteiro do cliente" FontAttributes="Bold" Margin="0,8,0,0" />
+            <Picker Title="Dia de visita" ItemsSource="{Binding Dias}" SelectedIndex="{Binding DiaIndex}" />
+            <Picker Title="Posição na rota" ItemsSource="{Binding Posicoes}" ItemDisplayBinding="{Binding Texto}" SelectedItem="{Binding Posicao}" />
+            <Label Text="A sequência é calculada automaticamente, entre os clientes vizinhos (ex.: entre 10 e 20 vira 15)." FontSize="12" />
+            <Button Text="Salvar cliente" Command="{Binding SalvarCommand}" Margin="0,12,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

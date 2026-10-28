@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PanificadoraVendas.Views.RoteiroPage" xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:PanificadoraVendas.ViewModels" Title="Roteiro de visitas">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo cliente" Command="{Binding NovoClienteCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="12" RowSpacing="8">
+        <Picker Grid.Row="0" Title="Dia da semana" ItemsSource="{Binding Dias}" SelectedIndex="{Binding DiaIndex}" />
+        <Label Grid.Row="1" Text="{Binding Resumo}" FontAttributes="Bold" />
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Clientes}">
+            <CollectionView.EmptyView>
+                <Label Text="Nenhum cliente neste dia. Baixe os dados na aba Sincronizar ou cadastre um cliente." HorizontalTextAlignment="Center" Margin="20" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,0,0,8" Stroke="#BDBDBD" StrokeShape="RoundRectangle 10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RoteiroViewModel}}, Path=AbrirCommand}" />
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="52,*,Auto" ColumnSpacing="8">
+                            <Label Text="{Binding Cliente.Sequencia}" FontSize="22" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="{Binding Cliente.Nome}" FontAttributes="Bold" FontSize="16" />
+                                <Label Text="{Binding Cliente.LocalTexto}" FontSize="12" />
+                                <Label Text="{Binding Cliente.DividaTexto}" TextColor="{Binding Cliente.CorDivida}" FontAttributes="Bold" FontSize="13" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" Text="{Binding Status}" TextColor="{Binding CorStatus}" VerticalOptions="Center" FontAttributes="Bold" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Row="3" Text="Próximo cliente da rota" Command="{Binding ProximoCommand}" />
+    </Grid>
+</ContentPage>

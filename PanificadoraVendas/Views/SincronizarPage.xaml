@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PanificadoraVendas.Views.SincronizarPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Sincronizar">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <Label Text="{Binding Usuario}" FontAttributes="Bold" />
+
+            <Label Text="Baixar lista de preços e clientes" FontSize="18" FontAttributes="Bold" Margin="0,10,0,0" />
+            <Label Text="{Binding Info}" />
+            <Button Text="Baixar clientes, produtos e condições" Command="{Binding BaixarCommand}" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+            <Label Text="{Binding Status}" />
+
+            <Label Text="Servidor" FontSize="18" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Entry Placeholder="URL da API (vazio = modo demonstração)" Keyboard="Url" Text="{Binding ApiUrl}" />
+            <Button Text="Salvar URL" Command="{Binding SalvarCommand}" BackgroundColor="Gray" />
+
+            <Button Text="Sair (trocar de usuário)" Command="{Binding SairCommand}" BackgroundColor="#C62828" Margin="0,24,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PanificadoraVendas.Views.ClientesPage" xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:PanificadoraVendas.ViewModels" Title="Clientes">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo" Command="{Binding NovoCommand}" />
+    </ContentPage.ToolbarItems>
+    <Grid RowDefinitions="Auto,*" Padding="12" RowSpacing="8">
+        <SearchBar Placeholder="Buscar por nome, cidade ou CNPJ" Text="{Binding Busca}" />
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Lista}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,0,0,8" Stroke="#BDBDBD" StrokeShape="RoundRectangle 10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding .}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClientesViewModel}}, Path=AbrirCommand}" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="{Binding Nome}" FontAttributes="Bold" FontSize="16" />
+                            <Label Text="{Binding LocalTexto}" FontSize="12" />
+                            <Label Text="{Binding DividaTexto}" TextColor="{Binding CorDivida}" FontAttributes="Bold" FontSize="13" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

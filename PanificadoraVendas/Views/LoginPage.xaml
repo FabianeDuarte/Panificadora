@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PanificadoraVendas.Views.LoginPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Entrar">
+    <ScrollView>
+        <VerticalStackLayout Padding="28" Spacing="12" VerticalOptions="Center" MaximumWidthRequest="460">
+            <Label Text="🥖" FontSize="64" HorizontalTextAlignment="Center" />
+            <Label Text="Panificação B2B" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            <Label Text="Entre com seu usuário de vendedor" HorizontalTextAlignment="Center" Margin="0,0,0,12" />
+
+            <Entry Placeholder="Usuário" Text="{Binding Login}" Keyboard="Email" ReturnType="Next" />
+            <Entry Placeholder="Senha" Text="{Binding Senha}" IsPassword="True" ReturnType="Done" ReturnCommand="{Binding EntrarCommand}" />
+            <Entry Placeholder="URL do servidor (vazio = demonstração)" Text="{Binding ApiUrl}" Keyboard="Url" FontSize="13" />
+
+            <Label Text="{Binding Erro}" TextColor="#C62828" FontAttributes="Bold" />
+            <Button Text="Entrar" Command="{Binding EntrarCommand}" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+            <Label Text="Sem servidor configurado: usuário demo / senha demo." FontSize="12" HorizontalTextAlignment="Center" Margin="0,16,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

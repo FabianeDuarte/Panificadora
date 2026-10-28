@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PanificadoraVendas.Views.PedidoPage" xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:PanificadoraVendas.ViewModels" Title="Pedido">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="12" RowSpacing="8">
+        <VerticalStackLayout Grid.Row="0" Spacing="4">
+            <Label Text="{Binding Cabecalho}" FontSize="20" FontAttributes="Bold" />
+            <Label Text="{Binding SubCabecalho}" FontSize="12" />
+            <Label Text="{Binding DividaTexto}" TextColor="{Binding CorDivida}" FontAttributes="Bold" FontSize="15" />
+            <Picker Title="Condição de pagamento" ItemsSource="{Binding Condicoes}" ItemDisplayBinding="{Binding Descricao}" SelectedItem="{Binding Condicao}" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <HorizontalStackLayout Spacing="6">
+                    <Switch IsToggled="{Binding MostrarTodos}" VerticalOptions="Center" />
+                    <Label Text="Mostrar todo o catálogo" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <Button Grid.Column="1" Text="Repetir última" Command="{Binding RepetirCommand}" FontSize="12" Padding="10,0" HeightRequest="36" />
+            </Grid>
+            <HorizontalStackLayout Spacing="12">
+                <Label Text="■ Promoção" TextColor="#E65100" FontSize="12" FontAttributes="Bold" />
+                <Label Text="■ Produto novo" TextColor="#1565C0" FontSize="12" FontAttributes="Bold" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Linhas}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" Margin="0,0,0,6" Stroke="#BDBDBD" StrokeShape="RoundRectangle 8" BackgroundColor="{Binding Fundo}">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="{Binding Tag}" IsVisible="{Binding TemTag}" TextColor="{Binding CorTag}" FontAttributes="Bold" FontSize="11" />
+                                <Label Text="{Binding Descricao}" TextColor="Black" FontAttributes="Bold" />
+                                <Label Text="{Binding PrecoTexto}" TextColor="#424242" FontSize="12" />
+                                <Label Text="{Binding UltimaTexto}" TextColor="#424242" FontSize="12" />
+                                <Label Text="{Binding SubtotalTexto}" TextColor="#1B5E20" FontAttributes="Bold" FontSize="13" />
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <Button Text="−" WidthRequest="44" HeightRequest="44" Padding="0" CommandParameter="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PedidoViewModel}}, Path=MenosCommand}" />
+                                <Entry Text="{Binding Qtd}" Keyboard="Numeric" WidthRequest="52" HorizontalTextAlignment="Center" TextColor="Black" />
+                                <Button Text="+" WidthRequest="44" HeightRequest="44" Padding="0" CommandParameter="{Binding .}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PedidoViewModel}}, Path=MaisCommand}" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <VerticalStackLayout Grid.Row="2" Spacing="6">
+            <Label Text="{Binding ParcelasTexto}" FontSize="12" />
+            <Label Text="{Binding TotalTexto}" FontSize="18" FontAttributes="Bold" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                <Button Text="Sem pedido" Command="{Binding SemPedidoCommand}" BackgroundColor="Gray" />
+                <Button Grid.Column="1" Text="Salvar pedido" Command="{Binding SalvarCommand}" />
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
