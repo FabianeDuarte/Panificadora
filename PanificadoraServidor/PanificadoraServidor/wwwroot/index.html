@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distribuidora de Panificação - Gestão</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="login">
+  <form id="loginForm" class="card" autocomplete="on">
+    <h1>🥖 Distribuidora</h1>
+    <p class="mini">Acesso ao sistema de gestão</p>
+    <label>Usuário</label>
+    <input id="lgLogin" type="text" autocomplete="username" required autofocus>
+    <label>Senha</label>
+    <input id="lgSenha" type="password" autocomplete="current-password" required>
+    <div id="lgErro" class="ruim"></div>
+    <button class="primario" style="width:100%;margin-top:12px">Entrar</button>
+  </form>
+</div>
+<div id="app" style="display:none">
+<aside>
+  <h1>🥖 Distribuidora</h1>
+  <nav id="menu"></nav>
+  <div class="usuarioBox">
+    <div>👤 <span id="usuarioNome"></span></div>
+    <button onclick="trocarSenha()">Trocar senha</button>
+    <button onclick="sair()">Sair</button>
+  </div>
+</aside>
+<main>
+  <h2 id="titulo"></h2>
+  <div id="conteudo"></div>
+</main>
+</div>
+<dialog id="dlg">
+  <form method="dialog">
+    <h3 id="dlgTitle"></h3>
+    <div id="dlgBody"></div>
+    <menu>
+      <button value="cancel">Cancelar</button>
+      <button id="dlgSave" class="primario">Salvar</button>
+    </menu>
+  </form>
+</dialog>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+wwwroot\app.js
+wwwroot\index.html
+wwwroot\style.css
+C:\Users\GrupoUDC\Downloads\files\PanificadoraServidor\PanificadoraServidor\wwwroot\app.js
+C:\Users\GrupoUDC\Downloads\files\PanificadoraServidor\PanificadoraServidor\wwwroot\index.html
+C:\Users\GrupoUDC\Downloads\files\PanificadoraServidor\PanificadoraServidor\wwwroot\style.css
